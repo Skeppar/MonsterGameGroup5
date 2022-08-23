@@ -33,6 +33,7 @@ public class MonsterGame {
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
         loadMap(terminal);
+        terminal.flush();
 
         Player player = createPlayer();
 
@@ -66,18 +67,10 @@ public class MonsterGame {
 
     private static void movePlayer(Player player, KeyStroke keyStroke) {
         switch (keyStroke.getKeyType()) {
-            case ArrowUp:
-                player.moveUp();
-                break;
-            case ArrowDown:
-                player.moveDown();
-                break;
-            case ArrowLeft:
-                player.moveLeft();
-                break;
-            case ArrowRight:
-                player.moveRight();
-                break;
+            case ArrowUp -> player.moveUp();
+            case ArrowDown -> player.moveDown();
+            case ArrowLeft -> player.moveLeft();
+            case ArrowRight -> player.moveRight();
         }
     }
 

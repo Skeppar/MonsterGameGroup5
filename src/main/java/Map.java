@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Map {
 
-    private final char block = '\u2588';
+    private char block = '\u2588';
     private ArrayList<Position> positions;
 
     public Map() {
@@ -55,11 +55,11 @@ public class Map {
     }
 
     public void printMap(Terminal terminal) throws IOException {
-
-         for (Position position : positions) {
+        map1();
+        for (Position position : positions) {
              terminal.setCursorPosition(position.getX(), position.getY());
              terminal.putCharacter(block);
-             
          }
+        terminal.flush();
     }
 }
