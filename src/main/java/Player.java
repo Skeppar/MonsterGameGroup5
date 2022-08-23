@@ -1,17 +1,15 @@
-public class Player {
+public class Player extends Characters {
+
     private int x;
     private int y;
     private char symbol;
     private int previousX;
     private int previousY;
 
-    public Player(int x, int y, char symbol) {
-        this.x = x;
-        this.y = y;
-        this.symbol = symbol;
-        this.previousX = x;
-        this.previousY = y;
+    public Player(boolean isAlive, Position position, char symbol) {
+        super(isAlive, position, symbol);
     }
+
 
     public int getX() {
         return x;

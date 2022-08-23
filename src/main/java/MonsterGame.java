@@ -12,7 +12,6 @@ public class MonsterGame {
 
     public static void main(String[] args) throws IOException {
 
-
         try {
             startGame();
         } catch (IOException | InterruptedException e) {
@@ -21,7 +20,11 @@ public class MonsterGame {
         } finally {
             System.out.println("Game over!");
         }
+    }
 
+    public static void loadMap(Terminal terminal) throws IOException {
+        Map map = new Map();
+        map.printMap(terminal);
     }
 
     private static void startGame() throws IOException, InterruptedException {
@@ -29,6 +32,7 @@ public class MonsterGame {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
+        loadMap(terminal);
 
         Player player = createPlayer();
 
@@ -87,7 +91,7 @@ public class MonsterGame {
     }
 
     public static Player createPlayer() {
-        return new Player(10,10, 'P');
+        return new Player(true,new Position(10, 10), 'C');
     }
 
     private static List<Monster> createMonsters() {
@@ -125,6 +129,7 @@ public class MonsterGame {
     private static boolean isPlayerAlive(Player player, List<Monster> monsters) {
         for (Monster monster : monsters) {
             if (monster.getPosition().getX() == player.getX() && monster.getPosition().getY() == player.getY()) {
+                player.isAlive = true;
                 return false;
             }
         }
