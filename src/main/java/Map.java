@@ -12,7 +12,13 @@ public class Map {
         this.positions = new ArrayList<>();
     }
 
+    public ArrayList<Position> getPositions() {
+        return positions;
+    }
 
+    public char getBlock() {
+        return block;
+    }
 
     public void map1() throws IOException {
         for (int a = 6; a < 16; a++) { // a = distance from right a < length. Next (a, star from top)

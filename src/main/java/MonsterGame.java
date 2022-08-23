@@ -22,9 +22,10 @@ public class MonsterGame {
         }
     }
 
-    public static void loadMap(Terminal terminal) throws IOException {
+    public static Map loadMap(Terminal terminal) throws IOException {
         Map map = new Map();
         map.printMap(terminal);
+        return map;
     }
 
     private static void startGame() throws IOException, InterruptedException {
@@ -32,7 +33,7 @@ public class MonsterGame {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
-        loadMap(terminal);
+        Map map = loadMap(terminal);
         terminal.setCursorVisible(false);
         terminal.flush();
 
@@ -47,6 +48,8 @@ public class MonsterGame {
 
             movePlayer(player, keyStroke);
 
+            crash(map, terminal, player);
+
             moveMonsters(player, monsters);
 
             drawCharacters(terminal, player, monsters);
@@ -58,6 +61,30 @@ public class MonsterGame {
         terminal.putCharacter(player.getSymbol());
         terminal.bell();
         terminal.flush();
+    }
+
+    private static void crash(Map map, Terminal terminal, Player player) throws IOException {
+        boolean crashIntoObsticle = false;
+        for (Position p : map.getPositions()) {
+            if (p.x == p.getX() && p.y == p.getY()) {
+                crashIntoObsticle = true;
+            }
+        }
+        if (crashIntoObsticle) {
+            map.getPositions().setX(map.getPositions().getPreviousX());
+            map.getPositions().setY(map.getPositions().getPreviousY());
+        }
+        else {
+
+
+            terminal.setCursorPosition(player.getX(), player.getY());
+            terminal.putCharacter(map.getBlock());
+
+
+            terminal.setCursorPosition(player.getPreviousX(), player.getPreviousY());
+
+            terminal.putCharacter(player.getSymbol());
+        }
     }
 
     private static void moveMonsters(Player player, List<Monster> monsters) {
