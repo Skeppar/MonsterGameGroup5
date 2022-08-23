@@ -107,7 +107,7 @@ public class MonsterGame {
         for (Monster monster : monsters) {
             terminal.setCursorPosition(monster.getPosition().getPreviousX(), monster.getPosition().getPreviousY());
             terminal.putCharacter(' ');
-
+            monster.position.getX();
             terminal.setCursorPosition(monster.getPosition().getX(), monster.getPosition().getY());
             terminal.putCharacter(monster.getSymbol());
         }
