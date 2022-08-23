@@ -14,15 +14,16 @@ public abstract class Characters {
 
     }
 
-    public boolean getAlive() {
+    public boolean getisAlive() {
         return isAlive;
     }
 
-    public void setAlive(boolean alive) {
+    public void setisAlive(boolean isAlive) {
     }
 
     public Position getPosition() {
         return position;
+       // position.getX() / position.setX() / position.getY() / position.setY()
     }
 
     public void setPosition(Position position) {
