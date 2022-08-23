@@ -28,11 +28,12 @@ public class MonsterGame {
     }
 
     private static void startGame() throws IOException, InterruptedException {
-        TerminalSize ts = new TerminalSize(150, 40);
+        TerminalSize ts = new TerminalSize(100, 40);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
         loadMap(terminal);
+        terminal.setCursorVisible(false);
         terminal.flush();
 
         Player player = createPlayer();
@@ -84,7 +85,7 @@ public class MonsterGame {
     }
 
     public static Player createPlayer() {
-        return new Player(true,new Position(10, 10), 'C');
+        return new Player(true, new Position(10, 10), 'P');
     }
 
     private static List<Monster> createMonsters() {
@@ -102,12 +103,15 @@ public class MonsterGame {
 
     private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters) throws IOException {
         for (Monster monster : monsters) {
-            terminal.setCursorPosition(monster.getPosition().getPreviousX(), monster.getPosition().getPreviousY());
+            //terminal.setCursorPosition(monster.getPosition().getPreviousX(), monster.getPosition().getPreviousY());
+            terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
             terminal.putCharacter(' ');
             monster.position.getX();
-            terminal.setCursorPosition(monster.getPosition().getX(), monster.getPosition().getY());
+            //terminal.setCursorPosition(monster.getPosition().getX(), monster.getPosition().getY());
+            terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
             terminal.putCharacter(monster.getSymbol());
         }
+
 
         terminal.setCursorPosition(player.getPreviousX(), player.getPreviousY());
         terminal.putCharacter(' ');
@@ -121,7 +125,7 @@ public class MonsterGame {
 
     private static boolean isPlayerAlive(Player player, List<Monster> monsters) {
         for (Monster monster : monsters) {
-            if (monster.getPosition().getX() == player.getX() && monster.getPosition().getY() == player.getY()) {
+            if (monster.getX() == player.getX() && monster.getY() == player.getY()) {
                 player.isAlive = true;
                 return false;
             }

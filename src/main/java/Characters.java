@@ -21,13 +21,37 @@ public abstract class Characters {
     public void setisAlive(boolean isAlive) {
     }
 
-    public Position getPosition() {
+    public int getX() {
+        return position.getX();
+    }
+
+    public void setX(int x) {
+        position.setX(x);
+    }
+
+    public int getY() {
+        return position.getY();
+    }
+
+    public void setY(int y) {
+        position.setY(y);
+    }
+
+    /**public Position getPosition() {
         return position;
        // position.getX() / position.setX() / position.getY() / position.setY()
-    }
+    }*/
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public int getPreviousX() {
+        return position.getPreviousX();
+    }
+
+    public int getPreviousY() {
+        return position.getPreviousY();
     }
 
     public char getSymbol() {

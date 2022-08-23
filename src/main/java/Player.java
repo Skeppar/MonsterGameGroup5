@@ -1,8 +1,7 @@
 public class Player extends Characters {
 
-    private int x;
-    private int y;
-    private char symbol;
+    //private int x;
+    //private int y;
     private int previousX;
     private int previousY;
 
@@ -11,50 +10,37 @@ public class Player extends Characters {
     }
 
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 
     public char getSymbol() {
         return symbol;
     }
 
-    public int getPreviousX() {
-        return previousX;
-    }
-
-    public int getPreviousY() {
-        return previousY;
-    }
 
     public void moveUp(){
-        previousX = x;
-        previousY = y;
-        y -= 2;
+        previousX = position.getX();
+        previousY = position.getY();
+        position.setY(previousY - 1);
     }
 
     public void moveDown(){
-        previousX = x;
-        previousY = y;
-        y += 2;
+        previousX = position.getX();
+        previousY = position.getY();
+        position.setY(previousY + 1);
     }
 
     public void moveLeft(){
-        previousX = x;
-        previousY = y;
-        x -= 2;
+        previousX = position.getX();
+        previousY = position.getY();
+        position.setX(previousX - 1);
     }
 
     public void moveRight(){
-        previousX = x;
-        previousY = y;
-        x += 2;
+        previousX = position.getX();
+        previousY = position.getY();
+        position.setX(previousX + 1);
     }
 
+    /**
     @Override
     public String toString() {
         return "monstergame2.Player{" +
@@ -64,5 +50,5 @@ public class Player extends Characters {
                 ", previousX=" + previousX +
                 ", previousY=" + previousY +
                 '}';
-    }
+    }*/
 }
