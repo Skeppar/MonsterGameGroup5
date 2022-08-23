@@ -71,8 +71,8 @@ public class MonsterGame {
             }
         }
         if (crashIntoObsticle) {
-            map.getPositions().setX(map.getPositions().getPreviousX());
-            map.getPositions().setY(map.getPositions().getPreviousY());
+           // player.setX(player.getPreviousX());
+            //player.setY(player.getPreviousY());
         }
         else {
 
@@ -112,7 +112,7 @@ public class MonsterGame {
     }
 
     public static Player createPlayer() {
-        return new Player(true, new Position(10, 10), 'P');
+        return new Player(true, new Position(11, 11), 'P');
     }
 
     private static List<Monster> createMonsters() {
