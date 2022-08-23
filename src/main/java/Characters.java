@@ -4,7 +4,6 @@ public abstract class Characters {
 
     protected Position position;
 
-
     protected char symbol;
 
     public Characters(boolean isAlive, Position position, char symbol) {
