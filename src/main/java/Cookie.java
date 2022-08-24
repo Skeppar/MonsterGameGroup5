@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Cookie {
 
-    private char cookie = '\uDF6A'; // Ändra sen!!!!
+    private char symbol = '\uDF6A'; // Ändra sen!!!!
     private ArrayList<Position> cookies;
 
     public Cookie() {
@@ -33,15 +33,24 @@ public class Cookie {
     public void printPointsMap1(Terminal terminal) throws IOException {
         pointsMap1();
         for (Position position : cookies) {
-            terminal.setCursorPosition(position.getX(), position.getY());
-            terminal.putCharacter(cookie);
+            if (position.isAlive) {
+                terminal.setCursorPosition(position.getX(), position.getY());
+                terminal.putCharacter(symbol);
+
+            } else {
+                terminal.setCursorPosition(position.getX(), position.getY());
+                terminal.putCharacter(' ');
+
+            }
+            //terminal.setCursorPosition(position.getX(), position.getY());
+            //terminal.putCharacter(cookie);
         }
         terminal.flush();
     }
 
-
-
-
+    public char getSymbol() {
+        return symbol;
+    }
 }
 
 

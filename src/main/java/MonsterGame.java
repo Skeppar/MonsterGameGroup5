@@ -67,6 +67,8 @@ public class MonsterGame {
             moveMonsters(player, monsters);
             crashMonster(map, terminal, monsters.get(0));
 
+            crashMonsterCookie(cookie, terminal, monsters.get(0));
+
             drawCharacters(terminal, player, monsters);
 
             terminal.flush();
@@ -125,6 +127,21 @@ public class MonsterGame {
 
     }
 
+    private static void crashMonsterCookie(Cookie cookie, Terminal terminal, Monster monster) throws IOException {
+
+        for (Position p : cookie.getCookies()) {
+            if (monster.getX() == p.getX() && monster.getY() == p.getY() && p.getisAlive()) {
+                terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
+                terminal.putCharacter(cookie.getSymbol());
+                terminal.setCursorPosition(monster.getX(), monster.getY());
+                terminal.putCharacter(monster.getSymbol());
+
+            }
+
+        }
+        terminal.flush();
+
+    }
 
 
     private static void moveMonsters(Player player, List<Monster> monsters) {
