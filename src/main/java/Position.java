@@ -3,6 +3,7 @@ public class Position {
     protected int y;
     protected int previousX;
     protected int previousY;
+    protected boolean isAlive = true;
 
 
     public Position(int x, int y) {
@@ -42,4 +43,13 @@ public class Position {
     public void setPreviousY(int previousY) {
         this.previousY = previousY;
     }
+
+    public boolean getisAlive() {
+        return isAlive;
+    }
+
+    public void setisAlive(boolean input) {
+        isAlive = input;
+    }
+
 }
