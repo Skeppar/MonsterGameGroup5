@@ -71,6 +71,13 @@ public class MonsterGame {
 
             drawCharacters(terminal, player, monsters);
 
+            if (crashMonsterCookie(cookie, terminal, monsters.get(0))) {
+                terminal.setCursorPosition(monsters.get(0).getPreviousX(), monsters.get(0).getPreviousY());
+                terminal.putCharacter(cookie.getSymbol());
+                terminal.setCursorPosition(monsters.get(0).getX(), monsters.get(0).getY());
+                terminal.putCharacter(monsters.get(0).getSymbol());
+            }
+
             terminal.flush();
             System.out.println(player.getPoints());
 
@@ -127,20 +134,20 @@ public class MonsterGame {
 
     }
 
-    private static void crashMonsterCookie(Cookie cookie, Terminal terminal, Monster monster) throws IOException {
-
+    private static boolean crashMonsterCookie(Cookie cookie, Terminal terminal, Monster monster) throws IOException {
+        boolean crashIntoObsticle = false;
         for (Position p : cookie.getCookies()) {
             if (monster.getX() == p.getX() && monster.getY() == p.getY() && p.getisAlive()) {
-                terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
-                terminal.putCharacter(cookie.getSymbol());
-                terminal.setCursorPosition(monster.getX(), monster.getY());
-                terminal.putCharacter(monster.getSymbol());
-
+                //terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
+                //terminal.putCharacter(cookie.getSymbol());
+                //terminal.setCursorPosition(monster.getX(), monster.getY());
+                //terminal.putCharacter(monster.getSymbol());
+                crashIntoObsticle = true;
+                return crashIntoObsticle;
             }
-
         }
         terminal.flush();
-
+        return crashIntoObsticle;
     }
 
 
