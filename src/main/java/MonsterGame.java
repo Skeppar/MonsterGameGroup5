@@ -28,10 +28,10 @@ public class MonsterGame {
         return map;
     }
 
-    public static Points loadPoints(Terminal terminal) throws IOException {
-        Points points = new Points();
-        points.printPointsMap1(terminal);
-        return points;
+    public static Cookie loadPoints(Terminal terminal) throws IOException {
+        Cookie cookie = new Cookie();
+        cookie.printPointsMap1(terminal);
+        return cookie;
     }
 
     private static void startGame() throws IOException, InterruptedException {
@@ -40,7 +40,7 @@ public class MonsterGame {
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
         Map map = loadMap(terminal);
-        Points points = loadPoints(terminal);
+        Cookie cookie = loadPoints(terminal);
         terminal.setCursorVisible(false);
         terminal.flush();
 
@@ -57,6 +57,8 @@ public class MonsterGame {
 
             movePlayer(player, keyStroke);
 
+            collectPoints(player, cookie);
+
             crash(map, terminal, player);
 
             moveMonsters(player, monsters);
@@ -65,6 +67,7 @@ public class MonsterGame {
             drawCharacters(terminal, player, monsters);
 
             terminal.flush();
+            System.out.println(player.getPoints());
 
         } while (isPlayerAlive(player, monsters));
 
@@ -118,6 +121,8 @@ public class MonsterGame {
         terminal.flush();
 
     }
+
+
 
     private static void moveMonsters(Player player, List<Monster> monsters) {
         for (Monster monster : monsters) {
@@ -197,9 +202,12 @@ public class MonsterGame {
         return true;
     }
 
-    private static void collectPoints(Player player, List<Points> points) {
-        for (Points point : points) {
-            if (point.getPositions().)
+    private static void collectPoints(Player player, Cookie cookies) {
+        for (Position cookie : cookies.getCookies()) {
+            if (cookie.getX() == player.getX() && cookie.getY() == player.getY() && cookie.getisAlive()) {
+                player.setPoints();
+                cookie.setisAlive(false);
+            }
         }
     }
 }

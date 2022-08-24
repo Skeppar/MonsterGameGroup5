@@ -43,4 +43,12 @@ public class Player extends Characters {
 
     }
 
+    public void setPoints() {
+        points++;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
 }
