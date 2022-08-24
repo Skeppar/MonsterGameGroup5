@@ -24,17 +24,17 @@ public class Map {
         for (int a = 6; a < 16; a++) { // a = distance from right a < length. Next (a, star from top)
             positions.add(new Position(a, 10));
         }
-        for (int a = 1; a < 100; a++) {
-            positions.add(new Position(a, 100));
+        for (int a = 0; a < 100; a++) {
+            positions.add(new Position(a, 40));
         }
-        for (int a = 1; a < 100; a++) {
-            positions.add(new Position(a, 0));
+        for (int a = 0; a < 100; a++) {
+            positions.add(new Position(a, 1));
         }
-        for (int a = 0; a < 50; a++) {
+        for (int a = 1; a < 40; a++) {
             positions.add(new Position(0, a));
         }
-        for (int a = 0; a < 50; a++) {
-            positions.add(new Position(100, a));
+        for (int a = 1; a < 40; a++) {
+            positions.add(new Position(99, a));
         }
         for (int a = 15; a < 25; a++) {
             positions.add(new Position(a, 5));

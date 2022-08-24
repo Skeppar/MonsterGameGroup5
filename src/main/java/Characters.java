@@ -19,6 +19,7 @@ public abstract class Characters {
     }
 
     public void setisAlive(boolean isAlive) {
+        this.isAlive = isAlive;
     }
 
     public int getX() {

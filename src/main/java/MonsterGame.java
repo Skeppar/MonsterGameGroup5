@@ -35,7 +35,7 @@ public class MonsterGame {
     }
 
     private static void startGame() throws IOException, InterruptedException {
-        TerminalSize ts = new TerminalSize(100, 40);
+        TerminalSize ts = new TerminalSize(100, 41);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
@@ -54,6 +54,9 @@ public class MonsterGame {
 
         do {
             KeyStroke keyStroke = getUserKeyStroke(terminal);
+
+            terminal.setCursorPosition(3, 0);
+            terminal.putString("Points: " + player.getPoints());
 
             movePlayer(player, keyStroke);
 
@@ -195,8 +198,8 @@ public class MonsterGame {
     private static boolean isPlayerAlive(Player player, List<Monster> monsters) {
         for (Monster monster : monsters) {
             if (monster.getX() == player.getX() && monster.getY() == player.getY()) {
-                player.isAlive = true;
-                return false;
+                player.setisAlive(false);
+                return player.getisAlive();
             }
         }
         return true;
