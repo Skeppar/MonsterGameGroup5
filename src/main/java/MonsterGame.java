@@ -51,8 +51,11 @@ public class MonsterGame {
             crash(map, terminal, player);
 
             moveMonsters(player, monsters);
+            crashMonster(map, terminal, monsters.get(0));
 
             drawCharacters(terminal, player, monsters);
+
+            terminal.flush();
 
         } while (isPlayerAlive(player, monsters));
 
@@ -66,25 +69,45 @@ public class MonsterGame {
     private static void crash(Map map, Terminal terminal, Player player) throws IOException {
         boolean crashIntoObsticle = false;
         for (Position p : map.getPositions()) {
-            if (p.x == p.getX() && p.y == p.getY()) {
+            if (player.getX() == p.getX() && player.getY() == p.getY()) {
                 crashIntoObsticle = true;
             }
         }
+
         if (crashIntoObsticle) {
-           // player.setX(player.getPreviousX());
-            //player.setY(player.getPreviousY());
-        }
-        else {
-
-
-            terminal.setCursorPosition(player.getX(), player.getY());
-            terminal.putCharacter(map.getBlock());
-
+            player.setX(player.getPreviousX());
+            player.setY(player.getPreviousY());
+        } else {
 
             terminal.setCursorPosition(player.getPreviousX(), player.getPreviousY());
-
+            terminal.putCharacter(' ');
+            terminal.setCursorPosition(player.getX(), player.getY());
             terminal.putCharacter(player.getSymbol());
         }
+        terminal.flush();
+
+    }
+
+    private static void crashMonster(Map map, Terminal terminal, Monster monster) throws IOException {
+        boolean crashIntoObsticle = false;
+        for (Position p : map.getPositions()) {
+            if (monster.getX() == p.getX() && monster.getY() == p.getY()) {
+                crashIntoObsticle = true;
+            }
+        }
+
+        if (crashIntoObsticle) {
+            monster.setX(monster.getPreviousX());
+            monster.setY(monster.getPreviousY());
+        } else {
+
+            terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
+            terminal.putCharacter(' ');
+            terminal.setCursorPosition(monster.getX(), monster.getY());
+            terminal.putCharacter(monster.getSymbol());
+        }
+        terminal.flush();
+
     }
 
     private static void moveMonsters(Player player, List<Monster> monsters) {
@@ -99,7 +122,9 @@ public class MonsterGame {
             case ArrowDown -> player.moveDown();
             case ArrowLeft -> player.moveLeft();
             case ArrowRight -> player.moveRight();
+
         }
+
     }
 
     private static KeyStroke getUserKeyStroke(Terminal terminal) throws InterruptedException, IOException {
@@ -131,11 +156,14 @@ public class MonsterGame {
     private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters) throws IOException {
         for (Monster monster : monsters) {
             //terminal.setCursorPosition(monster.getPosition().getPreviousX(), monster.getPosition().getPreviousY());
+            //terminal.setCursorPosition(monster.setX(monster.getPreviousX(), monster.setY(mo);););
+
+
             terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
             terminal.putCharacter(' ');
-            monster.position.getX();
+            //monster.position.getX();
             //terminal.setCursorPosition(monster.getPosition().getX(), monster.getPosition().getY());
-            terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
+            terminal.setCursorPosition(monster.getX(), monster.getY());
             terminal.putCharacter(monster.getSymbol());
         }
 
