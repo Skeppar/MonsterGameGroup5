@@ -20,7 +20,7 @@ public class Map {
         return block;
     }
 
-    public void map1() throws IOException {
+    public void map1() {
         for (int a = 6; a < 16; a++) { // a = distance from right a < length. Next (a, star from top)
             positions.add(new Position(a, 10));
         }

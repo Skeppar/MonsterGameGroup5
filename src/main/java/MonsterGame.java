@@ -28,12 +28,19 @@ public class MonsterGame {
         return map;
     }
 
+    public static Points loadPoints(Terminal terminal) throws IOException {
+        Points points = new Points();
+        points.printPointsMap1(terminal);
+        return points;
+    }
+
     private static void startGame() throws IOException, InterruptedException {
         TerminalSize ts = new TerminalSize(100, 40);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
         Map map = loadMap(terminal);
+        Points points = loadPoints(terminal);
         terminal.setCursorVisible(false);
         terminal.flush();
 
@@ -42,6 +49,8 @@ public class MonsterGame {
         List<Monster> monsters = createMonsters();
 
         drawCharacters(terminal, player, monsters);
+
+
 
         do {
             KeyStroke keyStroke = getUserKeyStroke(terminal);
@@ -186,5 +195,11 @@ public class MonsterGame {
             }
         }
         return true;
+    }
+
+    private static void collectPoints(Player player, List<Points> points) {
+        for (Points point : points) {
+            if (point.getPositions().)
+        }
     }
 }
