@@ -51,7 +51,6 @@ public class MonsterGame {
         drawCharacters(terminal, player, monsters);
 
 
-
         do {
             KeyStroke keyStroke = getUserKeyStroke(terminal);
 
@@ -72,12 +71,14 @@ public class MonsterGame {
             drawCharacters(terminal, player, monsters);
 
             if (crashMonsterCookie(cookie, terminal, monsters.get(0))) {
-                terminal.setCursorPosition(monsters.get(0).getPreviousX(), monsters.get(0).getPreviousY());
-                terminal.putCharacter(cookie.getSymbol());
-                terminal.setCursorPosition(monsters.get(0).getX(), monsters.get(0).getY());
-                terminal.putCharacter(monsters.get(0).getSymbol());
+                // terminal.setCursorPosition(monsters.get(0).getPreviousX(), monsters.get(0).getPreviousY());
+                for (Position p : cookie.getCookies()) {
+                    if (p.getisAlive()) {
+                        terminal.setCursorPosition(p.getX(), p.getY());
+                        terminal.putCharacter(cookie.getSymbol());
+                    }
+                }
             }
-
             terminal.flush();
 
         } while (isPlayerAlive(player, monsters));
@@ -130,13 +131,12 @@ public class MonsterGame {
             terminal.putCharacter(monster.getSymbol());
         }
         terminal.flush();
-
     }
 
     private static boolean crashMonsterCookie(Cookie cookie, Terminal terminal, Monster monster) throws IOException {
         boolean crashIntoObsticle = false;
         for (Position p : cookie.getCookies()) {
-            if (monster.getX() == p.getX() && monster.getY() == p.getY() && p.getisAlive()) {
+            if (monster.getPreviousX() == p.getX() && monster.getPreviousY() == p.getY() && p.getisAlive()) {
                 crashIntoObsticle = true;
                 return crashIntoObsticle;
             }
@@ -160,7 +160,6 @@ public class MonsterGame {
             case ArrowRight -> player.moveRight();
 
         }
-
     }
 
     private static KeyStroke getUserKeyStroke(Terminal terminal) throws InterruptedException, IOException {
@@ -182,13 +181,6 @@ public class MonsterGame {
         return monsters;
     }
 
-    private static Terminal createTerminal() throws IOException {
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
-        Terminal terminal = terminalFactory.createTerminal();
-        terminal.setCursorVisible(false);
-        return terminal;
-    }
-
     private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters) throws IOException {
         for (Monster monster : monsters) {
 
@@ -198,7 +190,6 @@ public class MonsterGame {
             terminal.putCharacter(monster.getSymbol());
         }
 
-
         terminal.setCursorPosition(player.getPreviousX(), player.getPreviousY());
         terminal.putCharacter(' ');
 
@@ -206,7 +197,6 @@ public class MonsterGame {
         terminal.putCharacter(player.getSymbol());
 
         terminal.flush();
-
     }
 
     private static boolean isPlayerAlive(Player player, List<Monster> monsters) {

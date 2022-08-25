@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab343867-5b88-4de0-b281-52a3beea5f45" name="Changes" comment="Old version">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MonsterGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MonsterGame.java" afterDir="false" />
     </list>
@@ -24,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="fix_cookie" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,6 +56,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MonsterGame" />
+        <item itemvalue="Application.MonsterGame" />
         <item itemvalue="Application.MonsterGame" />
       </list>
     </recent_temporary>
@@ -118,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661344400570</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Old version">
+      <created>1661414166525</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1661414166525</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,6 +159,7 @@
     <MESSAGE value="PATCH NOTES 2022-08-24&#10;New updates:&#10;Monstrer fungerar, ingen snake.&#10;Frid och fröjd." />
     <MESSAGE value="Cookie position" />
     <MESSAGE value="väggarna funkar nu" />
-    <option name="LAST_COMMIT_MESSAGE" value="väggarna funkar nu" />
+    <MESSAGE value="Old version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Old version" />
   </component>
 </project>
