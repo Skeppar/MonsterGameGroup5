@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab343867-5b88-4de0-b281-52a3beea5f45" name="Changes" comment="Old version">
+    <list default="true" id="ab343867-5b88-4de0-b281-52a3beea5f45" name="Changes" comment="Cookies are fixed!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MonsterGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MonsterGame.java" afterDir="false" />
     </list>
@@ -126,7 +126,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661414166525</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cookies are fixed!">
+      <created>1661415937869</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1661415937869</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Cookies are fixed!">
+      <created>1661415974132</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1661415974133</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +174,7 @@
     <MESSAGE value="Cookie position" />
     <MESSAGE value="väggarna funkar nu" />
     <MESSAGE value="Old version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Old version" />
+    <MESSAGE value="Cookies are fixed!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cookies are fixed!" />
   </component>
 </project>

@@ -196,7 +196,6 @@ public class MonsterGame {
         terminal.setCursorPosition(player.getX(), player.getY());
         terminal.putCharacter(player.getSymbol());
 
-        terminal.flush();
     }
 
     private static boolean isPlayerAlive(Player player, List<Monster> monsters) {
