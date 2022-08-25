@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MonsterGame {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         try {
             startGame();
@@ -79,7 +79,6 @@ public class MonsterGame {
             }
 
             terminal.flush();
-            System.out.println(player.getPoints());
 
         } while (isPlayerAlive(player, monsters));
 
@@ -138,10 +137,6 @@ public class MonsterGame {
         boolean crashIntoObsticle = false;
         for (Position p : cookie.getCookies()) {
             if (monster.getX() == p.getX() && monster.getY() == p.getY() && p.getisAlive()) {
-                //terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
-                //terminal.putCharacter(cookie.getSymbol());
-                //terminal.setCursorPosition(monster.getX(), monster.getY());
-                //terminal.putCharacter(monster.getSymbol());
                 crashIntoObsticle = true;
                 return crashIntoObsticle;
             }
@@ -196,14 +191,9 @@ public class MonsterGame {
 
     private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters) throws IOException {
         for (Monster monster : monsters) {
-            //terminal.setCursorPosition(monster.getPosition().getPreviousX(), monster.getPosition().getPreviousY());
-            //terminal.setCursorPosition(monster.setX(monster.getPreviousX(), monster.setY(mo);););
-
 
             terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
             terminal.putCharacter(' ');
-            //monster.position.getX();
-            //terminal.setCursorPosition(monster.getPosition().getX(), monster.getPosition().getY());
             terminal.setCursorPosition(monster.getX(), monster.getY());
             terminal.putCharacter(monster.getSymbol());
         }
