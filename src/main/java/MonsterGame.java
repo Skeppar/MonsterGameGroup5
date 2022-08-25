@@ -1,5 +1,8 @@
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
+//import com.googlecode.lanterna.graphics.NullTextGraphics;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -12,8 +15,13 @@ public class MonsterGame {
 
     public static void main(String[] args) {
 
+
+
+
         try {
-            startGame();
+            //startGame();
+            introGameScreen();
+
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             System.exit(1);
@@ -34,15 +42,48 @@ public class MonsterGame {
         return cookie;
     }
 
-    private static void startGame() throws IOException, InterruptedException {
-        TerminalSize ts = new TerminalSize(100, 41);
+    public static void introGameScreen() throws IOException, InterruptedException {
+        //introskärm. Funktion ska visa text "Monster Game 5", ska även ha enter för att köra, esc för att avsluta.
+        TerminalSize ts = new TerminalSize(100, 40);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
         Terminal terminal = terminalFactory.createTerminal();
+        terminal.setCursorVisible(false);
+
+        TextGraphics textGraphics = terminal.newTextGraphics();
+        terminal.setBackgroundColor(TextColor.ANSI.BLACK);
+        terminal.setForegroundColor(TextColor.ANSI.GREEN_BRIGHT);
+        terminal.enableSGR(SGR.BOLD);
+        textGraphics.putString(25, 15, "-- ** Packman The Cookie Cather ** --", SGR.BOLD);
+        textGraphics.putString(25, 20, "--Press Enter to start the fun--", SGR.BLINK);
+        terminal.flush();
+        switch (getUserKeyStroke(terminal).getKeyType()) {
+            case Enter -> startGame(terminal);
+            case Escape -> closeGame(terminal);
+        }
+    }
+
+    private static void closeGame(Terminal terminal) throws IOException, InterruptedException {
+        terminal.clearScreen();
+        terminal.setBackgroundColor(TextColor.ANSI.BLACK);
+        terminal.setForegroundColor(TextColor.ANSI.GREEN_BRIGHT);
+        TextGraphics textGraphics = terminal.newTextGraphics();
+        textGraphics.putString(25, 15, "Goodbye Friend, come back another time!");
+        terminal.wait(300);
+        terminal.close();
+        // Close funkar ej.
+    }
+
+    private static void startGame(Terminal terminal) throws IOException, InterruptedException {
+        //TerminalSize ts = new TerminalSize(100, 41);
+        //DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
+        //terminalFactory.setInitialTerminalSize(ts);
+        //Terminal terminal = terminalFactory.createTerminal();
+        terminal.clearScreen();
         Map map = loadMap(terminal);
         Cookie cookie = loadPoints(terminal);
-        terminal.setCursorVisible(false);
-        terminal.flush();
+        //terminal.setCursorVisible(false);
+        //terminal.flush();
 
         Player player = createPlayer();
 
@@ -158,6 +199,7 @@ public class MonsterGame {
             case ArrowDown -> player.moveDown();
             case ArrowLeft -> player.moveLeft();
             case ArrowRight -> player.moveRight();
+
 
         }
     }
