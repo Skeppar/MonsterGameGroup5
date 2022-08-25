@@ -194,7 +194,7 @@ public class MonsterGame {
         return terminal;
     }
 
-    private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters, Cookie cookie) throws IOException {
+    private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters) throws IOException {
         for (Monster monster : monsters) {
             //terminal.setCursorPosition(monster.getPosition().getPreviousX(), monster.getPosition().getPreviousY());
             //terminal.setCursorPosition(monster.setX(monster.getPreviousX(), monster.setY(mo);););
