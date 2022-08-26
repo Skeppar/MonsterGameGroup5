@@ -1,81 +1,93 @@
-public class Monster extends Characters implements InterfaceMonster {
+import java.util.Random;
 
-    public Monster(boolean isAlive, Position position, char symbol) {
+public class ErraticMonster extends Characters implements InterfaceMonster {
+
+
+    public ErraticMonster(boolean isAlive, Position position, char symbol) {
         super(isAlive, position, symbol);
+
     }
 
     public char getSymbol() {
-
         return symbol;
     }
 
     @Override
     public void moveTowards(Player player) {
-        // a monster wants to minimize the distance between itself and the player
 
-        // Along which axis should the monster move in?
-        // The monster will move in the direction in which the distance between monster and player is the largest.
-        // Let's use the absolute value of the difference between the x-ccordinates vs the y-coordinates!
-        // Example of Math.abs -> https://www.tutorialspoint.com/java/lang/math_abs_int.htm
+        Random rand = new Random();
+
 
         int diffX = this.position.getX() - player.getX();
         int absDiffX = Math.abs(diffX);
         int diffY = this.position.getY() - player.getY();
         int absDiffY = Math.abs(diffY);
+        int rn = rand.nextInt(8);
+
+
 
         if (absDiffX > absDiffY) {
-            // Move horizontally
+            // Move horizontal! <--->
             if (diffX < 0) {
                 int x = position.getX();
                 setPreviousX();
                 setPreviousY();
-                position.setX(x + 1);
+                position.setX(x + rn);
             } else {
                 int x = position.getX();
                 setPreviousX();
                 setPreviousY();
-                position.setX(x - 1);
+                position.setX(x - rn);
             }
         } else if (absDiffX < absDiffY) {
-            // Move vertically
+            // Move vertical! v / ^
             if (diffY < 0) {
                 int y = position.getY();
                 setPreviousX();
                 setPreviousY();
-                position.setY(y + 1);
+                position.setY(y + rn);
             } else {
                 int y = position.getY();
                 setPreviousX();
                 setPreviousY();
-                position.setY(y - 1);
+                position.setY(y - rn);
             }
         } else {
-            // Move diagonally
+            // Move diagonal! / or \
             if (diffX < 0) {
                 int x = position.getX();
                 setPreviousX();
-                position.setX(x + 1);
+                position.setX(x + rn);
             } else {
                 int x = position.getX();
                 setPreviousX();
-                position.setX(x - 1);
+                position.setX(x - rn);
             }
             if (diffY < 0) {
                 int y = position.getY();
                 setPreviousY();
-                position.setY(y + 1);
+                position.setY(y + rn);
             } else {
                 int y = position.getY();
                 setPreviousY();
-                position.setY(y - 1);
+                position.setY(y - rn);
             }
         }
+
+
+
     }
 
     public void setPreviousX() {
         position.setPreviousX(position.getX());
     }
-    public void setPreviousY(){
+
+    public void setPreviousY() {
         position.setPreviousY(position.getY());
     }
+
+
+
+
+
 }
