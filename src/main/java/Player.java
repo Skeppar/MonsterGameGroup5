@@ -1,6 +1,9 @@
+import com.googlecode.lanterna.TextColor;
+
 public class Player extends Characters {
 
     private int points;
+
 
     public Player(boolean isAlive, Position position, char symbol) {
         super(isAlive, position, symbol);
