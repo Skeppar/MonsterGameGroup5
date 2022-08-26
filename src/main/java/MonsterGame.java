@@ -185,9 +185,8 @@ public class MonsterGame {
             case ArrowDown -> player.moveDown();
             case ArrowLeft -> player.moveLeft();
             case ArrowRight -> player.moveRight();
-
-
         }
+        System.out.println("X: " + player.getX() + "\nY: " + player.getY());
     }
 
     private static KeyStroke getUserKeyStroke(Terminal terminal) throws InterruptedException, IOException {

@@ -22,12 +22,18 @@ public class Cookie {
         cookies.add(new Position(16, 4));
         cookies.add(new Position(25, 25));
         cookies.add(new Position(13,11));
-        cookies.add(new Position(18, 28));
+        cookies.add(new Position(10, 22));
         cookies.add(new Position(4, 29));
         cookies.add(new Position(19, 6));
-        cookies.add(new Position(60, 25));
-        cookies.add(new Position(40, 21));
-        cookies.add(new Position(29, 12));
+        cookies.add(new Position(62, 26));
+        cookies.add(new Position(34, 21));
+        cookies.add(new Position(29, 29));
+        cookies.add(new Position(49, 16));
+        cookies.add(new Position(52, 31));
+        cookies.add(new Position(95, 22));
+        cookies.add(new Position(68, 19));
+        cookies.add(new Position(71, 12));
+        // 15 cookies, set score = 15 means you win
     }
 
     public void printPointsMap1(Terminal terminal) throws IOException {
