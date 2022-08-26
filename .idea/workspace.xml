@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab343867-5b88-4de0-b281-52a3beea5f45" name="Changes" comment="Cookies are fixed!">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Characters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Characters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cookie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cookie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MonsterGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MonsterGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Position.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fix_cookie" />
+        <entry key="$PROJECT_DIR$" value="map" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,9 +45,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/AlvinSkeppar/Desktop/Old Assignments/AssessmentTest1"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\AlvinSkeppar\IdeaProjects\MonsterGameGroup5\src\main\java" />
@@ -56,6 +65,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MonsterGame" />
         <item itemvalue="Application.MonsterGame" />
         <item itemvalue="Application.MonsterGame" />
         <item itemvalue="Application.MonsterGame" />
@@ -140,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661415974133</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Cookies are fixed!">
+      <created>1661421216939</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1661421216939</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
