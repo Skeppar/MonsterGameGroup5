@@ -87,7 +87,7 @@ public class MonsterGame {
 
         Player player = createPlayer();
 
-        List<Monster> monsters = createMonsters();
+        List<InterfaceMonster> monsters = createMonsters();
 
         drawCharacters(terminal, player, monsters);
 
@@ -105,13 +105,13 @@ public class MonsterGame {
             crash(map, terminal, player);
 
             moveMonsters(player, monsters);
-            crashMonster(map, terminal, monsters.get(0));
+            crashMonster(map, terminal, monsters);
 
-            crashMonsterCookie(cookie, terminal, monsters.get(0));
+            crashMonsterCookie(cookie, terminal, monsters);
 
             drawCharacters(terminal, player, monsters);
 
-            if (crashMonsterCookie(cookie, terminal, monsters.get(0))) {
+            if (crashMonsterCookie(cookie, terminal, monsters)) {
                 // terminal.setCursorPosition(monsters.get(0).getPreviousX(), monsters.get(0).getPreviousY());
                 for (Position p : cookie.getCookies()) {
                     if (p.getisAlive()) {
@@ -153,43 +153,60 @@ public class MonsterGame {
 
     }
 
-    private static void crashMonster(Map map, Terminal terminal, Monster monster) throws IOException {
+    private static void crashMonster(Map map, Terminal terminal, List<InterfaceMonster> monsters) throws IOException {
         boolean crashIntoObsticle = false;
-        for (Position p : map.getPositions()) {
-            if (monster.getX() == p.getX() && monster.getY() == p.getY()) {
-                crashIntoObsticle = true;
+        for (InterfaceMonster monster: monsters) {
+            for (Position p : map.getPositions()) {
+                if (monster.getX() == p.getX() && monster.getY() == p.getY()) {
+                    crashIntoObsticle = true;
+                }
             }
+            if (crashIntoObsticle) {
+                monster.setX(monster.getPreviousX());
+                monster.setY(monster.getPreviousY());
+            } else {
+
+                terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
+                terminal.putCharacter(' ');
+                terminal.setCursorPosition(monster.getX(), monster.getY());
+                terminal.putCharacter(monster.getSymbol());
+            }
+            terminal.flush();
         }
 
-        if (crashIntoObsticle) {
-            monster.setX(monster.getPreviousX());
-            monster.setY(monster.getPreviousY());
-        } else {
-
-            terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
-            terminal.putCharacter(' ');
-            terminal.setCursorPosition(monster.getX(), monster.getY());
-            terminal.putCharacter(monster.getSymbol());
-        }
-        terminal.flush();
     }
 
-    private static boolean crashMonsterCookie(Cookie cookie, Terminal terminal, Monster monster) throws IOException {
+
+    private static boolean crashMonsterCookie(Cookie cookie, Terminal terminal, List<InterfaceMonster> monsters) throws IOException {
         boolean crashIntoObsticle = false;
-        for (Position p : cookie.getCookies()) {
-            if (monster.getPreviousX() == p.getX() && monster.getPreviousY() == p.getY() && p.getisAlive()) {
-                crashIntoObsticle = true;
-                return crashIntoObsticle;
+        for (InterfaceMonster monster: monsters) {
+            for (Position p : cookie.getCookies()) {
+                if (monster.getPreviousX() == p.getX() && monster.getPreviousY() == p.getY() && p.getisAlive()) {
+                    crashIntoObsticle = true;
+                    return crashIntoObsticle;
+                }
             }
         }
         terminal.flush();
         return crashIntoObsticle;
-    }
+        }
 
 
-    private static void moveMonsters(Player player, List<Monster> monsters) {
-        for (Monster monster : monsters) {
-            monster.moveTowards(player);
+
+    private static void moveMonsters(Player player, List<InterfaceMonster> monsters) {
+        for (InterfaceMonster m : monsters) {
+            m.moveTowards(player);
+
+/*
+            if (m instanceof Monster) {
+                Monster y = (Monster) m;
+                y.moveTowards(player);
+            }
+            if (m instanceof ErraticMonster) {
+                ErraticMonster y = (ErraticMonster) m;
+                y.moveMonster(player);
+            }
+*/
         }
     }
 
@@ -217,14 +234,15 @@ public class MonsterGame {
         return new Player(true, new Position(11, 11), 'P');
     }
 
-    private static List<Monster> createMonsters() {
-        List<Monster> monsters = new ArrayList<>();
+    private static List<InterfaceMonster> createMonsters() {
+        List<InterfaceMonster> monsters = new ArrayList<>();
         monsters.add(new Monster(true, new Position(3, 3), 'X'));
+        monsters.add(new ErraticMonster(true, new Position(4, 5), 'L'));
         return monsters;
     }
 
-    private static void drawCharacters(Terminal terminal, Player player, List<Monster> monsters) throws IOException {
-        for (Monster monster : monsters) {
+    private static void drawCharacters(Terminal terminal, Player player, List<InterfaceMonster> monsters) throws IOException {
+        for (InterfaceMonster monster : monsters) {
 
             terminal.setCursorPosition(monster.getPreviousX(), monster.getPreviousY());
             terminal.putCharacter(' ');
@@ -241,8 +259,8 @@ public class MonsterGame {
         terminal.flush();
     }
 
-    private static boolean isPlayerAlive(Player player, List<Monster> monsters) {
-        for (Monster monster : monsters) {
+    private static boolean isPlayerAlive(Player player, List<InterfaceMonster> monsters) {
+        for (InterfaceMonster monster : monsters) {
             if (monster.getX() == player.getX() && monster.getY() == player.getY()) {
                 player.setisAlive(false);
                 return player.getisAlive();
