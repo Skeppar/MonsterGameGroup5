@@ -190,17 +190,6 @@ public class MonsterGame {
     private static void moveMonsters(Player player, List<InterfaceMonster> monsters) {
         for (InterfaceMonster m : monsters) {
             m.moveTowards(player);
-
-/*
-            if (m instanceof Monster) {
-                Monster y = (Monster) m;
-                y.moveTowards(player);
-            }
-            if (m instanceof ErraticMonster) {
-                ErraticMonster y = (ErraticMonster) m;
-                y.moveMonster(player);
-            }
-*/
         }
     }
 

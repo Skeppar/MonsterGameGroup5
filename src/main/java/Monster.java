@@ -11,13 +11,6 @@ public class Monster extends Characters implements InterfaceMonster {
 
     @Override
     public void moveTowards(Player player) {
-        // a monster wants to minimize the distance between itself and the player
-
-        // Along which axis should the monster move in?
-        // The monster will move in the direction in which the distance between monster and player is the largest.
-        // Let's use the absolute value of the difference between the x-ccordinates vs the y-coordinates!
-        // Example of Math.abs -> https://www.tutorialspoint.com/java/lang/math_abs_int.htm
-
         int diffX = this.position.getX() - player.getX();
         int absDiffX = Math.abs(diffX);
         int diffY = this.position.getY() - player.getY();
