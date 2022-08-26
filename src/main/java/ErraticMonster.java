@@ -22,7 +22,7 @@ public class ErraticMonster extends Characters implements InterfaceMonster {
         int absDiffX = Math.abs(diffX);
         int diffY = this.position.getY() - player.getY();
         int absDiffY = Math.abs(diffY);
-        int rn = rand.nextInt(8);
+        int rn = rand.nextInt(1,4);
 
 
 

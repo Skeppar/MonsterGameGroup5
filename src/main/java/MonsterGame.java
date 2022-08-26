@@ -200,7 +200,6 @@ public class MonsterGame {
             case ArrowLeft -> player.moveLeft();
             case ArrowRight -> player.moveRight();
         }
-        System.out.println("X: " + player.getX() + "\nY: " + player.getY());
     }
 
     private static KeyStroke getUserKeyStroke(Terminal terminal) throws InterruptedException, IOException {
@@ -219,7 +218,7 @@ public class MonsterGame {
     private static List<InterfaceMonster> createMonsters() {
         List<InterfaceMonster> monsters = new ArrayList<>();
         monsters.add(new Monster(true, new Position(3, 3), '\u046c'));
-        monsters.add(new ErraticMonster(true, new Position(4, 5), '\u0468'));
+        monsters.add(new ErraticMonster(true, new Position(92, 35), '\u0468'));
         return monsters;
     }
 
