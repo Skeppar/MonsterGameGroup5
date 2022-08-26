@@ -26,7 +26,7 @@ public class MonsterGame {
             e.printStackTrace();
             System.exit(1);
         } finally {
-            System.out.println("Game over!");
+            System.out.println('\u8944' +" Game over! " + '\u8945');
         }
     }
 
@@ -43,7 +43,7 @@ public class MonsterGame {
     }
 
     public static void introGameScreen() throws IOException, InterruptedException {
-        //introskärm. Funktion ska visa text "Monster Game 5", ska även ha enter för att köra, esc för att avsluta.
+        //introskärm. Funktion ska visa text "Packman the cookie catcher", ska även ha enter för att köra, esc för att avsluta.
         TerminalSize ts = new TerminalSize(100, 40);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
@@ -52,10 +52,10 @@ public class MonsterGame {
 
         TextGraphics textGraphics = terminal.newTextGraphics();
         terminal.setBackgroundColor(TextColor.ANSI.BLACK);
-        terminal.setForegroundColor(TextColor.ANSI.GREEN_BRIGHT);
+        terminal.setForegroundColor(TextColor.ANSI.BLUE_BRIGHT);
         terminal.enableSGR(SGR.BOLD);
-        textGraphics.putString(25, 15, "-- ** Packman The Cookie Cather ** --", SGR.BOLD);
-        textGraphics.putString(25, 20, "--Press Enter to start the fun--", SGR.BLINK);
+        textGraphics.putString(25, 15, "-- ** Packman The Cookie Cather ** --", SGR.BOLD, SGR.BORDERED, SGR.REVERSE);
+        textGraphics.putString(27, 20, "--Press Enter to start the fun--", SGR.BLINK);
         terminal.flush();
         switch (getUserKeyStroke(terminal).getKeyType()) {
             case Enter -> startGame(terminal);
@@ -66,9 +66,9 @@ public class MonsterGame {
     private static void closeGame(Terminal terminal) throws IOException, InterruptedException {
         terminal.clearScreen();
         terminal.setBackgroundColor(TextColor.ANSI.BLACK);
-        terminal.setForegroundColor(TextColor.ANSI.GREEN_BRIGHT);
+        terminal.setForegroundColor(TextColor.ANSI.GREEN);
         TextGraphics textGraphics = terminal.newTextGraphics();
-        textGraphics.putString(25, 15, "Goodbye Friend, come back another time!");
+        textGraphics.putString(25, 15, "Goodbye Friend, come back another time!", SGR.BOLD);
         terminal.wait(300);
         terminal.close();
         // Close funkar ej.
@@ -214,12 +214,12 @@ public class MonsterGame {
     }
 
     public static Player createPlayer() {
-        return new Player(true, new Position(11, 11), 'P');
+        return new Player(true, new Position(11, 11), '\u046a');
     }
 
     private static List<Monster> createMonsters() {
         List<Monster> monsters = new ArrayList<>();
-        monsters.add(new Monster(true, new Position(3, 3), 'X'));
+        monsters.add(new Monster(true, new Position(3, 3), '\u046c'));
         return monsters;
     }
 

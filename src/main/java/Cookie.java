@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Cookie {
 
-    private char symbol = '\uDF6A'; // Ändra sen!!!!
+    private char symbol = '\u0488'; // Ändra sen!!!!
     private ArrayList<Position> cookies;
 
     public Cookie() {
