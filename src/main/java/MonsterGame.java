@@ -1,7 +1,6 @@
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
-//import com.googlecode.lanterna.graphics.NullTextGraphics;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -15,11 +14,7 @@ public class MonsterGame {
 
     public static void main(String[] args) {
 
-
-
-
         try {
-            //startGame();
             introGameScreen();
 
         } catch (IOException | InterruptedException e) {
@@ -43,7 +38,6 @@ public class MonsterGame {
     }
 
     public static void introGameScreen() throws IOException, InterruptedException {
-        //introskärm. Funktion ska visa text "Monster Game 5", ska även ha enter för att köra, esc för att avsluta.
         TerminalSize ts = new TerminalSize(100, 40);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         terminalFactory.setInitialTerminalSize(ts);
@@ -71,19 +65,12 @@ public class MonsterGame {
         textGraphics.putString(25, 15, "Goodbye Friend, come back another time!");
         terminal.wait(300);
         terminal.close();
-        // Close funkar ej.
     }
 
     private static void startGame(Terminal terminal) throws IOException, InterruptedException {
-        //TerminalSize ts = new TerminalSize(100, 41);
-        //DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
-        //terminalFactory.setInitialTerminalSize(ts);
-        //Terminal terminal = terminalFactory.createTerminal();
         terminal.clearScreen();
         Map map = loadMap(terminal);
         Cookie cookie = loadPoints(terminal);
-        //terminal.setCursorVisible(false);
-        //terminal.flush();
 
         Player player = createPlayer();
 
@@ -112,7 +99,6 @@ public class MonsterGame {
             drawCharacters(terminal, player, monsters);
 
             if (crashMonsterCookie(cookie, terminal, monsters.get(0))) {
-                // terminal.setCursorPosition(monsters.get(0).getPreviousX(), monsters.get(0).getPreviousY());
                 for (Position p : cookie.getCookies()) {
                     if (p.getisAlive()) {
                         terminal.setCursorPosition(p.getX(), p.getY());

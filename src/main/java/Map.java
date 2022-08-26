@@ -25,7 +25,7 @@ public class Map {
             positions.add(new Position(a, 10));
         }
         for (int a = 0; a < 100; a++) {
-            positions.add(new Position(a, 40));
+            positions.add(new Position(a, 39));
         }
         for (int a = 0; a < 100; a++) {
             positions.add(new Position(a, 1));

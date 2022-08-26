@@ -23,7 +23,7 @@ public class Monster extends Characters {
         int absDiffY = Math.abs(diffY);
 
         if (absDiffX > absDiffY) {
-            // Move horizontal! <--->
+            // Move horizontally
             if (diffX < 0) {
                 int x = position.getX();
                 setPreviousX();
@@ -36,7 +36,7 @@ public class Monster extends Characters {
                 position.setX(x - 1);
             }
         } else if (absDiffX < absDiffY) {
-            // Move vertical! v / ^
+            // Move vertically
             if (diffY < 0) {
                 int y = position.getY();
                 setPreviousX();
@@ -49,7 +49,7 @@ public class Monster extends Characters {
                 position.setY(y - 1);
             }
         } else {
-            // Move diagonal! / or \
+            // Move diagonally
             if (diffX < 0) {
                 int x = position.getX();
                 setPreviousX();
@@ -77,19 +77,4 @@ public class Monster extends Characters {
     public void setPreviousY(){
         position.setPreviousY(position.getY());
     }
-
-
-    /*
-    @Override
-    public String toString() {
-        return "monstergame2.Monster{" +
-                "x=" + getPosition().getX() +
-                ", y=" + getPosition().getY() +
-                ", symbol=" + symbol +
-                ", previousX=" + getPosition().getPreviousX() +
-                ", previousY=" + getPosition().getPreviousY() +
-                '}';
-    }
-
-     */
 }
