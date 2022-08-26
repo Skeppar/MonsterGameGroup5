@@ -7,11 +7,9 @@ public abstract class Characters {
     protected char symbol;
 
     public Characters(boolean isAlive, Position position, char symbol) {
-
         this.isAlive = isAlive;
         this.position = position;
         this.symbol = symbol;
-
     }
 
     public boolean getisAlive() {
@@ -37,11 +35,6 @@ public abstract class Characters {
     public void setY(int y) {
         position.setY(y);
     }
-
-    /**public Position getPosition() {
-        return position;
-       // position.getX() / position.setX() / position.getY() / position.setY()
-    }*/
 
     public void setPosition(Position position) {
         this.position = position;
